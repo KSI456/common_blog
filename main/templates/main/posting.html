@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Posting!</title>
+    </head>
+    <body>
+        <h1>게시글 개별 페이지입니다</h1>
+
+        <p>{{postlist.postname}}</p><hr>
+        <p>{{postlist.contents}}</p>
+        {% if photolist %}
+            {% for photo in photolist %}
+                <img src="{{photo.image.url}}" width="50"><br>
+            {% endfor %}
+            <br>
+        {% endif %}
+        <a href="/blog/{{postlist.pk}}/remove">삭제</a>
+        <a href="/blog/">목록</a>
+        <hr>
+        {% if commentlist %}
+            {% for comment in commentlist %}
+                <div class="comment"> {{comment.comment}} </div>
+                <div class="date">{{ comment.created_date }}</div>
+                <form method="POST" action = 'del_comment/{{comment.pk}}'>
+                    {% csrf_token %}
+                    <input type="text", name="password">
+                    <input type='submit', value='댓글 삭제'>
+                </form>
+                <!--<strong>{{ comment.comment_user }}</strong>-->
+            {% endfor %}
+            <br>
+        {% else %}
+            <p>No comments here yet :(</p>
+        {% endif %}
+        <form method="POST" action = 'comment/' >
+            {% csrf_token %}
+            <input type="text", name="comment_user">
+            <input type="text", name="comment"><br>
+            <input type='password', name='password'>
+            <input type='checkbox', name='comment_public'>
+            <!--<p>{{ comment|linebreaks }}</p>-->
+            <input type='submit', value = '댓글 쓰기'>
+        </form>
+        
+    </body>
+</html>
