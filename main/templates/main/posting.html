@@ -9,7 +9,7 @@
         <p>{{postlist.contents}}</p>
         {% if photolist %}
             {% for photo in photolist %}
-                <img src="{{photo.image.url}}" width="50"><br>
+                <img src="{{photo.image.url}}" style="max-width"; height:"auto"><br>
             {% endfor %}
             <br>
         {% endif %}
