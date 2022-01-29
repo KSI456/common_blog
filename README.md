@@ -25,7 +25,7 @@ cmd path를 가상환경을 생성했으면 하는 경로 에 두고 ex)'cd C:\U
 
 이 아래부터는 cmd에서 가상환경이 적용되 있는 상태에서 진행.
 
-cmd에서 다운받은 requirements.text 파일의 위치로 간 후 'pip install -r requirements.txt'실행으로 가상환경에 requirements.text에 적혀있는 환경을 적용한 가상환경에 설치한다.
+cmd에서 다운받은 requirements.text 파일의 위치로 간 후 requirements.text에서 as==0.1을 지우고 저장한다. 이 항목은 2022.01.29일 실행했을 때 pip에서 지원하지 않아 가상환경 설치에 문제가 발생한 것으로 보인다. 'pip install -r requirements.txt'실행으로 가상환경에 requirements.text에 적혀있는 환경을 적용한 가상환경에 설치한다.
 
 다운로드한 파일에 manage.py를 찾는다.
 
