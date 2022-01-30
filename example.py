@@ -1,43 +1,26 @@
-def solution(people, limit):
-    answer = 0
-    people.sort()
-    while people:
-        boat=[]
-        boat.append(people[-1])
-        people.pop()
-        while True:
-            boat_people = 0
-            for b in boat:
-                boat_people += b
-            rest_limit = limit - boat_people
-            if rest_limit<40 or people == []:
-                answer+=1
-                break
-            if people == True and rest_limit>=people[-1]:
-                boat.append(people[-1])
-                people.pop()
-                continue
-            first = 0
-            final = len(people)
-            while True:
-                middle = int((first+final)/2)+1
-                if middle < len(people)+1:
-                    boat.append(people[0])
-                    people.pop()
+import math
+def cal(n,times,right,zero,k):
+    while True:
+        middle = math.floor((right+zero)/2)
+        time = [math.floor(middle/x) for x in times]
+        total = 0
+        for j in time:
+            total+=j
+        if n!=total and k==1:
+            return middle+1
+        if n<total:
+            right=middle
+        elif n>total:
+            zero=middle
+        else:
+            k=1
+            return cal(n,times,right-1,zero-1,k)
+def solution(n, times):
+    zero=1
+    right = max(times)*n
+    k=0
+    return cal(n,times,right,zero,k)
 
-                    break
-                if people[middle]>rest_limit:
-                    final = middle
-                elif people[middle]>rest_limit:
-                    first = middle
-                else:
-                    boat.append(people[middle])
-                    people.pop(middle)
-
-                    break
-        
-    return answer
-
-people = [70, 80, 50]
-limit = 100
-print(solution(people, limit))
+n=6
+times = [7,10]
+print(solution(n,times))

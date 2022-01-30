@@ -1,5 +1,8 @@
+from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.fields import AutoField
 from django.utils import timezone
+
 # Create your models here.
 # 게시글(Post)엔 제목(postname), 내용(contents)이 존재합니다
 class Post(models.Model):
