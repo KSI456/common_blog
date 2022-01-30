@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<html>
+    <head>
+        <title>login Page</title>
+    </head>
+
+    <body>
+        <form method='POST' action='/'>
+            <h1>
+                <div class="content" style="display: flex;justify-content: center;align-items: center;min-height: 100vh;">{% crispy form %}
+                <button type="submit" >로그인</button>
+                </div>
+            </h1>
+            
+        </form>
+    </body>
+
+</html>
